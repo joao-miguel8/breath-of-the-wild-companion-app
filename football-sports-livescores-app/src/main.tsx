@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
-import ErrorPage from "./pages/error-page/ErrorPage.tsx";
-import MatchesPage from "./pages/matches-page/MatchesPage.tsx";
-import LeaguesPage from "./pages/leagues-page/LeaguesPage.tsx";
-import StatsPage from "./pages/stats-page/StatsPage.tsx";
-import NewsPage from "./pages/news-page/NewsPage.tsx";
+import ErrorPage from "./features/errorPage/ErrorPage.tsx";
+import MatchesPage from "./features/matchesPage/MatchesPage.tsx";
+import LeaguesPage from "./features/leaguesPage/LeaguesPage.tsx";
+import StatsPage from "./features/statsPage/StatsPage.tsx";
+import NewsPage from "./features/newsPage/NewsPage.tsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(

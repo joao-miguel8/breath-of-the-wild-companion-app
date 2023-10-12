@@ -16,16 +16,14 @@ export default function Nav() {
     return (
         <>
             <div className="pb-4 border-t-2 w-full fixed bottom-0 bg-[#4C1D52]">
-                <nav className="m-auto  min-[340px]:w-[340px]">
+                <nav className="m-auto min-[340px]:w-[340px]">
                     <ul className="flex justify-between pt-4 items-center">
                         {navList.map((navItem, index) => {
                             return (
-                                <div className="flex flex-col items-center">
+                                <Link aria-label={`${navItem.title} navigation option`} to={navItem.navLink} key={index} className="px-2 flex flex-col gap-2 items-center text-14 font-medium font-poppins text-white">
                                     <span>{navItem.icon}</span>
-                                    <Link to={navItem.navLink} key={index} className="px-2 text-14 font-medium font-poppins text-white">
-                                        {navItem.title}
-                                    </Link>
-                                </div>
+                                    {navItem.title}
+                                </Link>
                             );
                         })}
                     </ul>

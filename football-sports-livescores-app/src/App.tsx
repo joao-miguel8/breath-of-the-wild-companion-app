@@ -1,8 +1,11 @@
-import "./App.css";
-import Nav from "./components/ui/Nav";
+import "@/App.css";
+import SearchBar from "@/components/searchbar/SearchBar";
+import Nav from "./components/nav/Nav";
+
 function App() {
     return (
         <>
+            <SearchBar />
             <Nav />
         </>
     );
