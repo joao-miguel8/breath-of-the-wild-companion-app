@@ -1,5 +1,5 @@
 import SearchBar from "@/components/searchbar/SearchBar";
-import Nav from "../../components/nav/Nav";
+import Nav from "@/components/nav/Nav";
 
 export default function MatchesPage() {
     return (

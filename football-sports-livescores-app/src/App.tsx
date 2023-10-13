@@ -1,12 +1,13 @@
-import "@/App.css";
-import SearchBar from "@/components/searchbar/SearchBar";
-import Nav from "./components/nav/Nav";
+import { BrowserRouter } from "react-router-dom";
+import { AppRouter } from "./router/AppRouter";
+import "@/style/App.css";
 
 function App() {
     return (
         <>
-            <SearchBar />
-            <Nav />
+            <BrowserRouter>
+                <AppRouter />
+            </BrowserRouter>
         </>
     );
 }
