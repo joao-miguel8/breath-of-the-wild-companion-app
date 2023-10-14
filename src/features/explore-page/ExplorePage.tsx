@@ -1,11 +1,11 @@
 import SearchBar from "@/components/searchbar/SearchBar";
 import Nav from "@/components/nav/Nav";
 
-export default function StatsPage() {
+export default function ExplorePage() {
     return (
-        <div>
-            <SearchBar searchPlaceholder={"Stats"} />
+        <>
+            <SearchBar searchPlaceholder={"Explore"} />
             <Nav />
-        </div>
+        </>
     );
 }

@@ -1,11 +1,11 @@
 import SearchBar from "@/components/searchbar/SearchBar";
 import Nav from "@/components/nav/Nav";
 
-export default function MatchesPage() {
+export default function IngredientsPage() {
     return (
-        <>
-            <SearchBar searchPlaceholder={"Matches"} />
+        <div>
+            <SearchBar searchPlaceholder={"Inredient"} />
             <Nav />
-        </>
+        </div>
     );
 }
