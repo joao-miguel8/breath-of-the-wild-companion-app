@@ -1,10 +1,10 @@
 import Nav from "@/components/nav/Nav";
-import SearchBar from "@/components/searchbar/SearchBar";
+import Header from "@/components/header/Header";
 
 export default function CookBookPage() {
     return (
         <div>
-            <SearchBar searchPlaceholder={"Leagues"} />
+            <Header searchPlaceHolder={"Search Recipes"} />
             <Nav />
         </div>
     );

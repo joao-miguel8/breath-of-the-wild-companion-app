@@ -1,10 +1,10 @@
-import SearchBar from "@/components/searchbar/SearchBar";
 import Nav from "@/components/nav/Nav";
+import Header from "@/components/header/Header";
 
-export default function NewsPage() {
+export default function SavedPage() {
     return (
         <div>
-            <SearchBar searchPlaceholder={"News"} />
+            <Header searchPlaceHolder={"Search Saved List"} />
             <Nav />
         </div>
     );
