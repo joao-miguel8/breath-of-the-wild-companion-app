@@ -4,8 +4,8 @@ import { pagesData } from "../../router/pagesData";
 export default function Nav() {
     return (
         <>
-            <div className="pb-4 border-t-2 w-full fixed bottom-0 bg-[#161616]">
-                <nav className="px-2 m-auto min-[340px]:w-[340px]">
+            <div className="pb-4 w-full fixed bottom-0 bg-[#161616]">
+                <nav className="px-4 m-auto min-[340px]:w-[340px]">
                     <ul className="flex justify-between pt-4 items-center">
                         {pagesData.slice(1).map((navItem, index) => {
                             const titleFirstLetter = navItem.title.charAt(0).toUpperCase();
