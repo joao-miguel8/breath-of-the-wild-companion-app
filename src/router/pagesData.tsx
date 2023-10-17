@@ -1,7 +1,6 @@
 import { GiAnimalSkull, GiOpenTreasureChest } from "react-icons/gi";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { GiCarrot } from "react-icons/gi";
-import { Navigate } from "react-router-dom";
 import { routerType } from "@/router-types/routerType";
 import CreaturesPage from "@/features/creatures-page/CreaturesPage";
 import TreasurePage from "@/features/treasures-page/TreasurePage";
