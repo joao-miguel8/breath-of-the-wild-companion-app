@@ -3,7 +3,7 @@ import Header from "@/components/header/Header";
 
 export default function SavedPage() {
     return (
-        <div className="h-screen bg-[url(http://www.zelda.com/breath-of-the-wild/assets/img/patterns/black.jpg)] center top">
+        <div>
             <Header searchPlaceHolder={"Search Saved List"} />
             <Nav />
         </div>

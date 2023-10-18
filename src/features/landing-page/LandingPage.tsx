@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function LandingPage() {
     return (
-        <div className="h-screen bg-[url(http://www.zelda.com/breath-of-the-wild/assets/img/patterns/black.jpg)] center top">
+        <div>
             <div className="pt-40 flex flex-col items-center ">
                 <img className="w-80" src="https://www.zelda.com/breath-of-the-wild/assets/img/header/zelda-botw-logo_2x.png" />
                 <p className="mt-2 max-w-[400px] text-[1.2rem] text-center text-[#FAF7DC]">This is a directory of creatures, equipment, treasures and more...</p>
