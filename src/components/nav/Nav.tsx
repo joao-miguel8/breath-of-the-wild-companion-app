@@ -4,7 +4,7 @@ import { pagesData } from "../../router/pagesData";
 export default function Nav() {
     return (
         <>
-            <div className="z-50 pb-4 w-full fixed bottom-0 bg-[#161616]">
+            <div className="z-[100] pb-4 w-full fixed bottom-0 bg-[#161616]">
                 <nav className="px-4 m-auto min-[340px]:w-[340px]">
                     <ul className="flex justify-between pt-4 items-center">
                         {pagesData.slice(1).map((navItem, index) => {

@@ -6,6 +6,7 @@ export default function CreaturesPage() {
     return (
         <>
             <Header pageName={"Creatures"} searchPlaceHolder={"Search Creatures"} />
+
             <CreaturesList />
             <Nav />
         </>

@@ -19,9 +19,9 @@ module.exports = {
         },
         extend: {
             colors: {
-                accent: "#47CDC3",
+                accent: "#b3a65b",
             },
         },
     },
-    plugins: [],
+    plugins: [require("tailwind-scrollbar")],
 };
