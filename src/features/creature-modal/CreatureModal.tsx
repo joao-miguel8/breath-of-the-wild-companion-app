@@ -1,10 +1,14 @@
 import { AiFillCloseCircle, AiFillHeart } from "react-icons/ai";
 import { creatureDataType } from "../creatures-list/types/creatureDataType";
 import useDisableBodyScroll from "../../hooks/useDisableBodyScroll";
+import useHandleOverlayModalClick from "../../hooks/useHandleOverlayModalClick";
 
 export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenCardInfo: creatureDataType; toggleModal: () => void }) {
     // disable body scroll when modal window is open
     useDisableBodyScroll();
+
+    const handleOverModalClick = useHandleOverlayModalClick(toggleModal);
+    const [modalRef, handleOverlayClicked] = handleOverModalClick;
 
     const renderHeartsRecovered = (value: number) => {
         let hearts = [];
@@ -16,10 +20,13 @@ export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenC
     const heartsRecovered = renderHeartsRecovered(chosenCardInfo.hearts_recovered);
 
     const capitalizeCookingEffect = () => {
-        const cookingEffect = chosenCardInfo.cooking_effect;
-        const restOfWord = cookingEffect.slice(1);
-        const firstChar = cookingEffect[0].toUpperCase();
-        return firstChar.concat(restOfWord);
+        if (chosenCardInfo.cooking_effect) {
+            const cookingEffect = chosenCardInfo.cooking_effect;
+            const restOfWord = cookingEffect.slice(1);
+            const firstChar = cookingEffect[0].toUpperCase();
+            return firstChar.concat(restOfWord);
+        }
+        return "";
     };
     const cookingEffect = capitalizeCookingEffect();
 
@@ -27,35 +34,31 @@ export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenC
         <>
             {
                 // overlay div
-                <div
-                    onClick={() => {
-                        toggleModal();
-                    }}
-                    className="p-2 w-screen h-screen z-50 fixed top-0 left-0 backdrop-blur-sm flex justify-center">
+                <div onClick={handleOverlayClicked} className="p-2 w-screen h-screen z-50 fixed top-0 left-0 backdrop-blur-sm flex justify-center">
                     {/* ----------------- */}
-                    <div className="mt-10 mx-10 h-fit sm:w-[500px] border-2 border-accent bg-[#1f1f1f] rounded-sm">
+                    <div ref={modalRef} className="mt-10 mx-10 h-fit sm:w-[500px] border-2 border-accent bg-[#1f1f1f] rounded-sm">
                         {/* header div */}
                         <div className="mx-2 my-2 flex justify-end">
                             <button
                                 onClick={() => {
                                     toggleModal();
                                 }}>
-                                <AiFillCloseCircle className="w-8 h-8 text-white hover:text-[#e0cb56] hover:duration-300 ease-in-out" />
+                                <AiFillCloseCircle className="w-8 h-8 text-white hover:text-accent hover:duration-300 ease-in-out" />
                             </button>
                         </div>
                         <div className="px-4 h-[450px] sm:h-[400px] md:h-[500px] overflow-scroll min-w-[300px]:overflow-none scrollbar-thin scrollbar-thumb-accent scrollbar-track-none">
                             {/* category/title/img section */}
                             <div className="mt-10 flex flex-col">
                                 <span className="block text-14 font-medium uppercase text-center text-white">Creature</span>
-                                <h3 className="text-24 font-semibold text-center text-white">{chosenCardInfo.name}</h3>
-                                <img src={chosenCardInfo.image} alt={`image of ${chosenCardInfo.name}`} className="mt-4 self-center w-[180px] rounded-md" />
+                                <h3 className="text-24 font-semibold text-center text-white">{chosenCardInfo?.name}</h3>
+                                <img src={chosenCardInfo?.image} alt={`image of ${chosenCardInfo?.name}`} className="mt-4 self-center w-[180px] rounded-md" />
                             </div>
                             {/* text content */}
                             <div className="max-h-[60vh]">
                                 <div className="mt-4">
                                     {/* description section */}
                                     <h5 className="font-bold text-white">Description</h5>
-                                    <p className="mt-2 text-16 text-white">{chosenCardInfo.description}</p>
+                                    <p className="mt-2 text-16 text-white">{chosenCardInfo?.description}</p>
                                 </div>
                                 {/* common locations / additional info section */}
                                 <div>
@@ -64,7 +67,7 @@ export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenC
                                         <div>
                                             <h3 className="mb-2 text-14 font-bold text-white">Common Locations</h3>
                                             <div className="text-18 flex flex-wrap ">
-                                                {chosenCardInfo.common_locations.map((location: string, index: number) => {
+                                                {chosenCardInfo?.common_locations?.map((location: string, index: number) => {
                                                     const lastListItem = index === chosenCardInfo.common_locations.length - 1;
                                                     return (
                                                         <p key={index} className="text-16 text-white">
@@ -79,7 +82,7 @@ export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenC
                                         <div>
                                             <h3 className="mb-2 text-14 font-bold text-white">Additional Info</h3>
                                             <div className="flex items-start gap-4">
-                                                {chosenCardInfo.edible ? <p className="text-accent">Edible</p> : <p className="text-white italic">not edible</p>}
+                                                {chosenCardInfo?.edible ? <p className="text-accent">Edible</p> : <p className="text-white italic">not edible</p>}
                                                 {chosenCardInfo.dlc ? <p className="text-[#FAF7DC]">DLC</p> : <p className="text-white italic">not DLC</p>}
                                             </div>
                                         </div>
@@ -89,14 +92,14 @@ export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenC
                                         <div>
                                             <h3 className="mb-2 text-14 font-bold text-white">Hearts Recovered</h3>
                                             <div className="flex">
-                                                {heartsRecovered.map(heart => {
-                                                    return <span>{heart}</span>;
+                                                {heartsRecovered?.map((heart, index) => {
+                                                    return <span key={index}>{heart}</span>;
                                                 })}
                                             </div>
                                         </div>
                                         <div>
                                             <h3 className="text-14 font-bold text-white">Cooking Effect</h3>
-                                            {chosenCardInfo.cooking_effect ? <p className="text-[#e0cb56]">{cookingEffect}</p> : <p className="text-white italic">no cooking effect</p>}
+                                            {chosenCardInfo?.cooking_effect ? <p className="text-[#e0cb56]">{cookingEffect}</p> : <p className="text-white italic">no cooking effect</p>}
                                         </div>
                                     </div>
                                 </div>

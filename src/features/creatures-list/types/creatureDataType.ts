@@ -1,3 +1,5 @@
+//  TypeScript type representing data for creatures as retrieved from the API fetch.
+
 export type creatureDataType = {
     category: string;
     common_locations: Array<string>;

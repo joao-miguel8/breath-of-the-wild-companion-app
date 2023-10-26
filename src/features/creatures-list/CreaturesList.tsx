@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingDataIndicator from "../../components/loading-data-indicator/LoadingDataIndicator";
 import CreatureCard from "../creature-card/CreatureCard";
 import { creatureDataType } from "./types/creatureDataType";
 import useQueryCreaturesAndMonsters from "./hooks/useQueryCreaturesAndMonsters";
 import CreatureModal from "../creature-modal/CreatureModal";
 import { useToggle } from "../../hooks/useToggle";
+import MonsterModal from "../monster-modal/MonsterModal";
 
 export default function CreaturesList() {
     const [chosenCard, setChosenCard] = useState<object>({});
     const [cardType, setCardType] = useState<string>("");
     const { data: creatureAndMonstersData, loadingCreatures: loadingCreatures, loadingMonsters: loadingMonsters, errorFetchingMonsters: errorFetchingMonsters, errorFetchingCreatures: errorFetchingCreatures } = useQueryCreaturesAndMonsters();
 
-    const creatureModalToggle = useToggle(true);
+    // create custom toggle variables for modals
+    const creatureModalToggle = useToggle();
+    const monsterModalToggle = useToggle();
     const [creatureModalValue, onCreatureModalToggle] = creatureModalToggle;
+    const [monsterModalValue, onMonsterModalToggle] = monsterModalToggle;
 
     // API Error conditions
     if (errorFetchingCreatures || errorFetchingMonsters) return <h2 className="mt-40 text-40 text-center text-white">Error loading Data</h2>;
@@ -20,7 +24,12 @@ export default function CreaturesList() {
     function handleCardModalChosen(index: number) {
         setChosenCard(creatureAndMonstersData[index]);
         setCardType(creatureAndMonstersData[index].category);
-        onCreatureModalToggle();
+        // trigger our toggle modal depending on category
+        if (cardType === "monsters") {
+            onMonsterModalToggle();
+        } else if (cardType === "creatures") {
+            onCreatureModalToggle();
+        }
     }
 
     const isCategoryCreature = cardType === "creatures";
@@ -28,12 +37,11 @@ export default function CreaturesList() {
 
     return (
         <>
-            {creatureModalValue && (
-                <>
-                    {isCategoryMonster && console.log("is monster")}
-                    {isCategoryCreature && <CreatureModal toggleModal={onCreatureModalToggle} chosenCardInfo={chosenCard} />}
-                </>
-            )}
+            <>
+                {isCategoryMonster && monsterModalValue && <MonsterModal toggleModal={onMonsterModalToggle} chosenCardInfo={chosenCard} />}
+                {isCategoryCreature && creatureModalValue && <CreatureModal toggleModal={onCreatureModalToggle} chosenCardInfo={chosenCard} />}
+            </>
+
             <section>
                 {loadingCreatures || loadingMonsters ? (
                     <div className="flex justify-center mt-40">
