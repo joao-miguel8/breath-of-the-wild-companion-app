@@ -7,7 +7,6 @@ import useQueryCreaturesAndMonsters from "../../features/creatures-list/hooks/us
 const SearchBar = ({ placeholder }) => {
     const [searchValue, setSearchValue] = useState<string>("");
     const [isSearchActive, setIsSearchActive] = useState(false);
-    const { data: creatureAndMonstersData } = useQueryCreaturesAndMonsters();
 
     const filterDataByName = (array: any[], filterValue: string) => {
         return array.filter((item: string) => {
@@ -19,7 +18,7 @@ const SearchBar = ({ placeholder }) => {
         setIsSearchActive(state => !state);
         setSearchValue("");
     }
-    console.log(creatureAndMonstersData);
+
     return (
         <>
             <div role="search" aria-label={placeholder} className={classNames("pl-8 left-0 w-full fixed top-0 flex items-center justify-between duration-500 bg-[#010204]", !isSearchActive && "-translate-y-20")}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LoadingDataIndicator from "../../components/loading-data-indicator/LoadingDataIndicator";
 import CreatureCard from "../creature-card/CreatureCard";
 import { creatureDataType } from "./types/creatureDataType";
