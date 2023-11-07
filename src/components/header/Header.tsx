@@ -1,13 +1,7 @@
-import { FC } from "react";
 import SearchBar from "../searchbar/SearchBar";
 import { AiFillFilter } from "react-icons/ai";
 
-interface headerData {
-    pageData?: undefined;
-    searchPlaceHolder: string;
-}
-
-export default function Header({ pageData, searchPlaceHolder }): FC<headerData> {
+export default function Header({ searchPlaceHolder }: { searchPlaceHolder: string }) {
     return (
         <header className="z-50 fixed top-0 w-full flex items-center  bg-[#010204] h-20 opacity-80 backdrop-blur-[2px]">
             <img className="ml-4 w-20" src="https://www.zelda.com/breath-of-the-wild/assets/img/header/zelda-botw-logo_2x.png" />

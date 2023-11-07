@@ -13,5 +13,5 @@ export default function useDisableBodyScroll() {
         return () => {
             bodyRef.current.style.overflow = "scroll";
         };
-    }, []);
+    }, [bodyRef]);
 }

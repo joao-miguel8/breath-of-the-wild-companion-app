@@ -4,8 +4,14 @@ import { useState } from "react";
 
 export function useToggle(initVal = false) {
     const [on, setOn] = useState(initVal);
+    const toggleFalse = () => {
+        setOn(false);
+    };
+    const toggleTrue = () => {
+        setOn(true);
+    };
     const onToggle = () => {
         setOn(!on);
     };
-    return [on, onToggle];
+    return { on, onToggle, toggleTrue, toggleFalse };
 }

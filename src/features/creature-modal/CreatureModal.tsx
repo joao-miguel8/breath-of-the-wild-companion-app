@@ -2,6 +2,8 @@ import { AiFillCloseCircle, AiFillHeart } from "react-icons/ai";
 import { creatureDataType } from "../creatures-list/types/creatureDataType";
 import useDisableBodyScroll from "../../hooks/useDisableBodyScroll";
 import useHandleOverlayModalClick from "../../hooks/useHandleOverlayModalClick";
+import { renderHeartsRecovered } from "@/util/renderHeartsRecovered";
+renderHeartsRecovered;
 
 export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenCardInfo: creatureDataType; toggleModal: () => void }) {
     // disable body scroll when modal window is open
@@ -10,14 +12,7 @@ export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenC
     const handleOverModalClick = useHandleOverlayModalClick(toggleModal);
     const [modalRef, handleOverlayClicked] = handleOverModalClick;
 
-    const renderHeartsRecovered = (value: number) => {
-        let hearts = [];
-        for (let i = 0; i < value; i++) {
-            hearts.push(<AiFillHeart color={"red"} key={i} size={"1.5rem"} />);
-        }
-        return hearts;
-    };
-    const heartsRecovered = renderHeartsRecovered(chosenCardInfo.hearts_recovered);
+    const heartsRecovered = renderHeartsRecovered(chosenCardInfo?.hearts_recovered, <AiFillHeart color={"red"} size={"1.5rem"} />);
 
     const capitalizeCookingEffect = () => {
         if (chosenCardInfo.cooking_effect) {

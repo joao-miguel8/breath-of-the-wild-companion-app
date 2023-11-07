@@ -3,7 +3,7 @@ import MaterialsCard from "../materials-card/MaterialsCard";
 import useFetchMaterials from "./hooks/useFetchMaterials";
 import { materialType } from "./types/materialType";
 
-export default function MaterialsList() {
+export default function MaterialsList({ handleChosenMaterial, handleMaterialToggleTrue }: { handleChosenMaterial: (arr: [], chosenIndex: number) => void; handleMaterialToggleTrue: () => void }) {
     const fetchMaterials = useFetchMaterials();
     const { data: materialsData, error: materialsFetchError, isLoading: loadingMaterials } = fetchMaterials;
 
@@ -17,7 +17,15 @@ export default function MaterialsList() {
             {(materialsFetchError as React.ReactNode) && <p className="mx-20 mt-40 text-white">Error Loading Materials</p>}
             <div className="min-[300px]:mx-4 pb-24 mt-24 mx-auto grid gap-2 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                 {materialsData?.data?.map((material: materialType, index: number) => {
-                    return <MaterialsCard key={index} materialInfo={material} />;
+                    return (
+                        <button
+                            onClick={() => {
+                                handleChosenMaterial(materialsData?.data, index);
+                                handleMaterialToggleTrue();
+                            }}>
+                            <MaterialsCard key={index} materialInfo={material} />
+                        </button>
+                    );
                 })}
             </div>
         </section>

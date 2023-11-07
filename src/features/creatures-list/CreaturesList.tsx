@@ -15,8 +15,8 @@ export default function CreaturesList() {
     // create custom toggle variables for modals
     const creatureModalToggle = useToggle();
     const monsterModalToggle = useToggle();
-    const [creatureModalValue, onCreatureModalToggle] = creatureModalToggle;
-    const [monsterModalValue, onMonsterModalToggle] = monsterModalToggle;
+    const { on: creatureModalValue, onToggle: onCreatureModalToggle } = creatureModalToggle;
+    const { on: monsterModalValue, onToggle: onMonsterModalToggle } = monsterModalToggle;
 
     // API Error conditions
     if (errorFetchingCreatures || errorFetchingMonsters) return <h2 className="mt-40 text-40 text-center text-white">Error loading Data</h2>;
