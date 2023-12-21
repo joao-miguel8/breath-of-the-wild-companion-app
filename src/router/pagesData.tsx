@@ -1,11 +1,11 @@
 import { GiAnimalSkull, GiCampCookingPot, GiOpenTreasureChest } from "react-icons/gi";
 import { BsFillBookmarkFill } from "react-icons/bs";
-import { routerType } from "@/router-types/routerType";
-import CreaturesPage from "@/features/creatures-page/CreaturesPage";
-import TreasurePage from "@/features/treasures-page/TreasurePage";
-import MaterialsPage from "@/features/materials-page/MaterialsPage";
-import SavedPage from "@/features/saved-page/SavedPage";
-import LandingPage from "@/features/landing-page/LandingPage";
+import { routerType } from "../router/router-type/routerType";
+import CreaturesPage from "../features/creatures-page/CreaturesPage";
+import TreasurePage from "../features/treasures-page/TreasurePage";
+import MaterialsPage from "../features/materials-page/MaterialsPage";
+import SavedPage from "../features/saved-page/SavedPage";
+import LandingPage from "../features/landing-page/LandingPage";
 
 const iconStyling = "text-[1.4rem]";
 
