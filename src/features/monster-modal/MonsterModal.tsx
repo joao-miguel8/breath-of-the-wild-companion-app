@@ -6,11 +6,10 @@ import useHandleOverlayModalClick from "../../hooks/useHandleOverlayModalClick";
 export default function MonsterModal({ chosenCardInfo, toggleModal }: { chosenCardInfo: monsterDataType; toggleModal: () => void }) {
 	useDisableBodyScroll();
 	const handleOverModalClick = useHandleOverlayModalClick(toggleModal);
-	const [modalRef, handleOverlayClicked] = handleOverModalClick;
 
 	return (
-		<div onClick={handleOverlayClicked} className="p-2 w-screen h-screen z-50 fixed top-0 left-0 backdrop-blur-sm flex justify-center ">
-			<div ref={modalRef} className="mt-10 mx-10 h-fit sm:w-[500px] relative z-50 border-2 border-accent bg-[#1f1f1f] rounded-sm">
+		<div onClick={handleOverModalClick.handleOverlayClick} className="p-2 w-screen h-screen z-50 fixed top-0 left-0 backdrop-blur-sm flex justify-center ">
+			<div ref={handleOverModalClick.modalRef} className="mt-10 mx-10 h-fit sm:w-[500px] relative z-50 border-2 border-accent bg-[#1f1f1f] rounded-sm">
 				{/* header div */}
 				<div className="mx-2 my-2 flex justify-end">
 					<button onClick={() => toggleModal()}>
