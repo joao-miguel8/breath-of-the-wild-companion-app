@@ -1,7 +1,10 @@
-import { monsterDataType } from "../creatures-list/types/monsterDataType";
+// 3RD PARTY LIBRARY
 import { AiFillCloseCircle } from "react-icons/ai";
+// HOOKS
 import useDisableBodyScroll from "../../hooks/useDisableBodyScroll";
 import useHandleOverlayModalClick from "../../hooks/useHandleOverlayModalClick";
+// TYPES
+import type { monsterDataType } from "../creatures-list/types/monsterDataType";
 
 export default function MonsterModal({ chosenCardInfo, toggleModal }: { chosenCardInfo: monsterDataType; toggleModal: () => void }) {
 	useDisableBodyScroll();

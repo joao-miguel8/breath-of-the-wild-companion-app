@@ -1,4 +1,4 @@
-// 3RD PARTY LIBS
+// 3RD PARTY LIBRARY
 import { AiFillCloseCircle, AiFillHeart } from "react-icons/ai";
 // HOOKS
 import useDisableBodyScroll from "../../hooks/useDisableBodyScroll";
