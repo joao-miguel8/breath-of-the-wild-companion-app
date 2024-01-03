@@ -11,7 +11,7 @@ import useQueryCreaturesAndMonsters from "./hooks/useQueryCreaturesAndMonsters";
 import type { creatureDataType } from "./types/creatureDataType";
 import { monsterDataType } from "./types/monsterDataType";
 
-export default function CreaturesList() {
+export default function CreaturesList({ searchQuery }: { searchQuery: string }) {
 	const [chosenCard, setChosenCard] = useState<creatureDataType | monsterDataType | null>();
 	const [cardType, setCardType] = useState("");
 	const { data: creatureAndMonstersData, loadingCreatures: loadingCreatures, loadingMonsters: loadingMonsters, errorFetchingMonsters: errorFetchingMonsters, errorFetchingCreatures: errorFetchingCreatures } = useQueryCreaturesAndMonsters();
@@ -38,6 +38,10 @@ export default function CreaturesList() {
 
 	const isCategoryCreature = cardType === "creatures";
 	const isCategoryMonster = cardType === "monsters";
+	// list over creature | monster data and filter by search Query list
+	const filteredList = creatureAndMonstersData.filter(element => {
+		return element.name.includes(searchQuery);
+	});
 
 	return (
 		<>
@@ -51,7 +55,7 @@ export default function CreaturesList() {
 					</div>
 				) : (
 					<div className={`mb-24 w-fit mx-auto gap-4 mt-40 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}>
-						{creatureAndMonstersData?.map((creature: creatureDataType, index: number) => {
+						{filteredList?.map((creature: creatureDataType, index: number) => {
 							return (
 								<button onClick={() => handleCardModalChosen(index)}>
 									<CreatureCard key={index} name={creature.name} imageURL={creature.image} />
