@@ -5,7 +5,7 @@ import CreatureModal from "../creature-modal/CreatureModal";
 import MonsterModal from "../monster-modal/MonsterModal";
 // HOOKS
 import { useState } from "react";
-import { useToggle } from "../../hooks/useToggle";
+import { useToggle } from "../../hooks/useToggle/useToggle";
 import useQueryCreaturesAndMonsters from "./hooks/useQueryCreaturesAndMonsters";
 // TYPES
 import type { creatureDataType } from "./types/creatureDataType";

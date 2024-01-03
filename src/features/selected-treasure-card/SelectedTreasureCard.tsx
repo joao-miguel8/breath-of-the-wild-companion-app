@@ -1,9 +1,11 @@
-import useDisableBodyScroll from "@/hooks/useDisableBodyScroll";
+// 3RD PARTY LIBARIES
 import classNames from "classnames";
 import { AiFillCloseCircle } from "react-icons/ai";
+// TYPES
 import type { ChosenTreasureCardType } from "./types/selectedTreasureCard";
+import { UseToggleType } from "@/hooks/useToggle/UseToggleType";
 
-function SelectedTreasureCard({ chosenTreasureCard, cardToggle }: { chosenTreasureCard: ChosenTreasureCardType; cardToggle: () => void }) {
+function SelectedTreasureCard({ chosenTreasureCard, cardToggle }: { chosenTreasureCard: ChosenTreasureCardType | undefined; cardToggle: UseToggleType }) {
 	const { name, image, dlc, drops, description, common_locations } = chosenTreasureCard || {};
 
 	return (
@@ -32,7 +34,7 @@ function SelectedTreasureCard({ chosenTreasureCard, cardToggle }: { chosenTreasu
 					{/* Common Locations container */}
 					<div className="basis-24 text-center">
 						<h5 className="text-18 font-bold text-white">Common Locations</h5>
-						{common_locations?.map((location, key) => (
+						{common_locations?.map(location => (
 							<p key={location} className="mt-4 text-accent">
 								{location}
 							</p>
@@ -49,7 +51,6 @@ function SelectedTreasureCard({ chosenTreasureCard, cardToggle }: { chosenTreasu
 							))}
 						</div>
 					</div>
-					{/* </div> */}
 				</div>
 			</div>
 		</div>
