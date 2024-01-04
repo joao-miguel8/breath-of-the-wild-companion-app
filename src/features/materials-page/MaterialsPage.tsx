@@ -8,6 +8,7 @@ import { useToggle } from "@/hooks/useToggle/useToggle";
 
 export default function MaterialsPage() {
 	const [chosenMaterial, setChosenMaterial] = useState<materialType | null>(null);
+	const [searchQuery, setSearchQuery] = useState("");
 	const chosenMaterialToggle = useToggle();
 	const { on: chosenToggleVal, toggleFalse: handleMaterialToggleFalse, toggleTrue: handleMaterialToggleTrue } = chosenMaterialToggle;
 
@@ -17,9 +18,9 @@ export default function MaterialsPage() {
 
 	return (
 		<div>
-			<Header searchPlaceHolder={"Search Materials"} />
+			<Header searchPlaceHolder={"Search Materials"} handleSearchQuery={searchVal => setSearchQuery(searchVal)} />
 			<ChosenMaterialCard chosenCardInfo={chosenMaterial as materialType} toggleChosenMaterialVal={chosenToggleVal} handleMaterialToggleFalse={handleMaterialToggleFalse} />
-			<MaterialsList handleChosenMaterial={handleSelectedChosenMaterial} handleMaterialToggleTrue={handleMaterialToggleTrue} />
+			<MaterialsList handleChosenMaterial={handleSelectedChosenMaterial} handleMaterialToggleTrue={handleMaterialToggleTrue} searchQuery={searchQuery} />
 			<Nav />
 		</div>
 	);

@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import classNames from "classnames";
 
 const SearchBar = ({ placeHolder, searchQuery }: { placeHolder: string; searchQuery: any }) => {
-	const [searchValue, setSearchValue] = useState<string>("");
+	const [searchValue, setSearchValue] = useState("");
 	const [isSearchActive, setIsSearchActive] = useState(false);
 
 	function handleCloseAndResetSearch() {
@@ -15,7 +15,7 @@ const SearchBar = ({ placeHolder, searchQuery }: { placeHolder: string; searchQu
 	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const inputVal = e.target.value || "";
 		setSearchValue(inputVal);
-		searchQuery(searchValue.toLowerCase());
+		searchQuery(inputVal.toLowerCase());
 	};
 
 	return (
