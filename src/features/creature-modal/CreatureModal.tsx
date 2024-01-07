@@ -15,7 +15,6 @@ export default function CreatureModal({ chosenCardInfo, toggleModal }: { chosenC
 	const handleOverlayModalClick = useHandleOverlayModalClick(toggleModal);
 
 	const heartsRecovered = renderHeartsRecovered(chosenCardInfo?.hearts_recovered, <AiFillHeart color={"red"} size={"1.5rem"} />);
-
 	const capitalizeCookingEffect = () => {
 		if (chosenCardInfo.cooking_effect) {
 			const cookingEffect = chosenCardInfo.cooking_effect;

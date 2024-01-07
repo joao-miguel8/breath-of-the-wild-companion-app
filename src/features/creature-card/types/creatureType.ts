@@ -1,4 +1,4 @@
 export type creatureCardType = {
-    name: string;
-    imageURL: string;
+	name: string;
+	imageURL: string;
 };
