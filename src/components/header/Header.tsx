@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // COMPONENTS
 import SearchBar from "../searchbar/SearchBar";
 
-export default function Header({ searchPlaceHolder, handleSearchQuery }: { searchPlaceHolder: string; handleSearchQuery: (searchVal: string) => void }) {
+export default function Header({ searchPlaceHolder, handleSearchQuery }: { searchPlaceHolder: string; handleSearchQuery?: (searchVal: string) => void }) {
 	return (
 		<header className="z-50 fixed top-0 w-full flex items-center  bg-[#010204] h-20 opacity-80 backdrop-blur-[2px]">
 			<Link to={"/creatures"}>
