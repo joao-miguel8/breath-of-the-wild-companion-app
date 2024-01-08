@@ -12,7 +12,7 @@ export default function TreasureCard({
 	cardInfo: treasureCardType;
 	cardID: number;
 	isCardContainerHovered: boolean;
-	handleChosenTreasureCard: (cardInfo: treasureCardType) => void;
+	handleChosenTreasureCard: (card: treasureCardType) => void;
 	toggleChosenCard: UseToggleType;
 }) {
 	function cardStyling(cardID: number, chosenID: number, styling: string, animationStyle?: string) {
