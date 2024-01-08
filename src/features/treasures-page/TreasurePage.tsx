@@ -11,14 +11,15 @@ import useFetchTreasures from "../treasures-list/hooks/useFetchTreasures";
 import { useToggle } from "../../hooks/useToggle/useToggle";
 // TYPES
 import type { ChosenTreasureCardType } from "../selected-treasure-card/types/selectedTreasureCard";
+import type { treasureCardType } from "../treasure-card/types/treasureCardType";
 
 export default function TreasurePage() {
 	const { data: treasuresData, isLoading: loadingTreasures } = useFetchTreasures();
-	const [chosenTreasureCard, setChosenTreasureCard] = useState<ChosenTreasureCardType | undefined>();
+	const [chosenTreasureCard, setChosenTreasureCard] = useState<ChosenTreasureCardType | treasureCardType | undefined>();
 
 	const chosenTreasureCardToggle = useToggle();
 
-	const handleChosenTreasureCard = (card: ChosenTreasureCardType) => setChosenTreasureCard(card);
+	const handleChosenTreasureCard = (card: ChosenTreasureCardType | treasureCardType) => setChosenTreasureCard(card);
 
 	return (
 		<div>

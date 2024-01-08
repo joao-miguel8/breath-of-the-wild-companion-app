@@ -3,10 +3,11 @@ import classNames from "classnames";
 import { AiFillCloseCircle } from "react-icons/ai";
 // TYPES
 import type { ChosenTreasureCardType } from "./types/selectedTreasureCard";
-import { UseToggleType } from "@/hooks/useToggle/UseToggleType";
+import type { UseToggleType } from "@/hooks/useToggle/UseToggleType";
+import type { treasureCardType } from "../treasure-card/types/treasureCardType";
 
-function SelectedTreasureCard({ chosenTreasureCard, cardToggle }: { chosenTreasureCard: ChosenTreasureCardType | undefined; cardToggle: UseToggleType }) {
-	const { name, image, dlc, drops, description, common_locations } = chosenTreasureCard || {};
+function SelectedTreasureCard({ chosenTreasureCard, cardToggle }: { chosenTreasureCard: ChosenTreasureCardType | treasureCardType | undefined; cardToggle: UseToggleType }) {
+	const { name, image, dlc, drops, description, common_locations } = (chosenTreasureCard as ChosenTreasureCardType) || {};
 
 	return (
 		<div className={classNames("mb-20 h-full w-full sticky top-40 overflow-scroll bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-neutral-900 via-zinc-900 to-stone-800 scrollbar-none scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-200 border-4 border-accent")}>
@@ -34,7 +35,7 @@ function SelectedTreasureCard({ chosenTreasureCard, cardToggle }: { chosenTreasu
 					{/* Common Locations container */}
 					<div className="basis-24 text-center">
 						<h5 className="text-18 font-bold text-white">Common Locations</h5>
-						{common_locations?.map(location => (
+						{common_locations?.map((location: string) => (
 							<p key={location} className="mt-4 text-accent">
 								{location}
 							</p>
@@ -44,7 +45,7 @@ function SelectedTreasureCard({ chosenTreasureCard, cardToggle }: { chosenTreasu
 					<div className="basis-52 text-center">
 						<h5 className="text-18 font-bold text-white">Drops</h5>
 						<div className="h-40 overflow-scroll scrollbar-none scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-200">
-							{drops?.map((drop, key) => (
+							{drops?.map((drop: string, key: number) => (
 								<p key={key} className="mt-4 text-accent">
 									{drop}
 								</p>

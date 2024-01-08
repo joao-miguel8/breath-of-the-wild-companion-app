@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { treasureCardType } from "./types/treasureCardType";
 import { UseToggleType } from "@/hooks/useToggle/UseToggleType";
+import { ChosenTreasureCardType } from "../selected-treasure-card/types/selectedTreasureCard";
 
 export default function TreasureCard({
 	cardInfo,
@@ -12,7 +13,7 @@ export default function TreasureCard({
 	cardInfo: treasureCardType;
 	cardID: number;
 	isCardContainerHovered: boolean;
-	handleChosenTreasureCard: (card: treasureCardType) => void;
+	handleChosenTreasureCard: (cardInfo: ChosenTreasureCardType | treasureCardType) => void;
 	toggleChosenCard: UseToggleType;
 }) {
 	function cardStyling(cardID: number, chosenID: number, styling: string, animationStyle?: string) {
