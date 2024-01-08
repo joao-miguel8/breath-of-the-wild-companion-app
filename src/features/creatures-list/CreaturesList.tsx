@@ -27,7 +27,7 @@ export default function CreaturesList({ searchQuery }: { searchQuery: string }) 
 	if (errorFetchingCreatures || errorFetchingMonsters) return <h2 className="mt-40 text-40 text-center text-white">Error loading Data</h2>;
 
 	function handleCardModalChosen(index: number) {
-		setChosenCard(creatureAndMonstersData[index]);
+		setChosenCard(filteredList[index]);
 		setCardType(creatureAndMonstersData[index].category);
 		// Trigger our toggle modal depending on category
 		if (cardType === "monsters") {
