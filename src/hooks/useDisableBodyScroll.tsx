@@ -7,12 +7,15 @@ export default function useDisableBodyScroll() {
 	const bodyRef = useRef(bodyEle);
 
 	useEffect(() => {
-		// Fixed scroll when modal is open
+		// disable scroll when modal is open
+		// bodyRef.current.style.overflow = "hidden";
 		bodyRef.current.style.position = "fixed";
 		bodyRef.current.style.width = "100%";
+
 		// remove overflow-hidden when modal closed
 		return () => {
 			bodyRef.current.style.position = "static";
+			bodyRef.current.style.overflow = "scroll";
 		};
 	}, [bodyRef]);
 }
