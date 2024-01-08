@@ -1,5 +1,4 @@
 import useCustomQuery from "../../../hooks/useCustomQuery";
-import { creatureDataType } from "../types/creatureDataType";
 
 /*
   A custom React hook designed to facilitate the querying of creature data from an external API, this hook leverages the useCustomQuery hook to fetch and manage data retrieval. This hook returns an object containing the query results including:
@@ -7,7 +6,7 @@ import { creatureDataType } from "../types/creatureDataType";
 */
 
 export default function useQueryCreatures() {
-	const { data, error, isLoading } = useCustomQuery<creatureDataType[]>(
+	const { data, error, isLoading } = useCustomQuery(
 		`https://botw-compendium.herokuapp.com/api/v3/compendium/category/creatures
 `,
 		"creaturesFetch"
