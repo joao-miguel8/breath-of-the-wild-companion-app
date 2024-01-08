@@ -13,6 +13,7 @@ import { monsterDataType } from "./types/monsterDataType";
 
 export default function CreaturesList({ searchQuery }: { searchQuery: string }) {
 	const [chosenCard, setChosenCard] = useState<creatureDataType | monsterDataType | null>();
+
 	const [cardType, setCardType] = useState("");
 	const { data: creatureAndMonstersData, loadingCreatures: loadingCreatures, loadingMonsters: loadingMonsters, errorFetchingMonsters: errorFetchingMonsters, errorFetchingCreatures: errorFetchingCreatures } = useQueryCreaturesAndMonsters();
 
@@ -43,6 +44,13 @@ export default function CreaturesList({ searchQuery }: { searchQuery: string }) 
 		return element.name.includes(searchQuery);
 	});
 
+	const sortByAlphabet = (arr: creatureDataType[] | monsterDataType[]) =>
+		arr.sort((a, b) => {
+			if (a.name > b.name) return 1;
+			if (a.name < b.name) return -1;
+			return 0;
+		});
+
 	return (
 		<>
 			{isCategoryMonster && monsterModalValue && chosenCard && <MonsterModal toggleModal={onMonsterModalToggle} chosenCardInfo={chosenCard as monsterDataType} />}
@@ -55,10 +63,10 @@ export default function CreaturesList({ searchQuery }: { searchQuery: string }) 
 					</div>
 				) : (
 					<div className={`mb-24 w-fit mx-auto gap-4 mt-40 grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}>
-						{filteredList?.map((creature: creatureDataType, index: number) => {
+						{sortByAlphabet(filteredList)?.map((creature: creatureDataType | monsterDataType, index: number) => {
 							return (
 								<button onClick={() => handleCardModalChosen(index)}>
-									<CreatureCard key={index} name={creature.name} imageURL={creature.image} />
+									<CreatureCard name={creature.name} imageURL={creature.image} />
 								</button>
 							);
 						})}
