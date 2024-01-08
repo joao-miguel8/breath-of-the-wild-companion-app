@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from "react";
+import { ElementRef } from "react";
 
 export default function useMouseOverDetection() {
 	const [globalCordXY, setGlobalCordXY] = useState({ x: 0, y: 0 });
 	const [isHovered, setIsHovered] = useState(false);
-	const chosenEle = useRef<HTMLElement>(null);
+	const chosenEle = useRef<ElementRef<"div">>(null);
 
 	const elementBoundaries = (x: number, left: number, right: number, y: number, top: number, bottom: number) => {
 		setIsHovered(x >= left && x <= right && y >= top && y <= bottom);
